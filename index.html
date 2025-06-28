@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student-Teacher Booking</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="scripts/auth.js" defer></script>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <label><input type="checkbox" id="darkModeToggle"> Dark Mode 🌙</label>
+    </div>
+
+    <div class="container">
+        <h1>📚 Student-Teacher Appointment</h1>
+
+        <div id="authSection">
+            <h2>Login / Register</h2>
+            <form id="authForm">
+                <input type="text" id="name" placeholder="Full Name" required />
+                <input type="email" id="email" placeholder="Email" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <select id="role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button id="loginBtn">Login</button>
+                <button id="registerBtn">Register</button>
+            </form>
+
+            <p id="authMessage"></p>
+        </div>
+
+        <div id="appSection" style="display:none;">
+            <h2>Welcome, <span id="userRole"></span>!</h2>
+            <button id="logoutBtn">Logout</button>
+            <div id="dashboard"></div>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('darkModeToggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark', toggle.checked);
+        });
+
+        const cursor = document.createElement('div');
+        cursor.classList.add('planet-cursor');
+        document.body.appendChild(cursor);
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+    </script>
+</body>
+
+</html>
