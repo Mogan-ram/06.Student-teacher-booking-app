@@ -1,20 +1,18 @@
-// scripts/firebase-config.js
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
+// Use environment variables injected by Netlify
 const firebaseConfig = {
-    apiKey: "AIzaSyCHYvtRtMn0fJPkPAXs8csufnxbmXZUU2c",
-    authDomain: "studentteacherappointmen-9cad2.firebaseapp.com",
-    projectId: "studentteacherappointmen-9cad2",
-    storageBucket: "studentteacherappointmen-9cad2.firebasestorage.app",
-    messagingSenderId: "418499813102",
-    appId: "1:418499813102:web:8403882306391c54fa9dff"
+    apiKey: window.env.FIREBASE_API_KEY,
+    authDomain: window.env.FIREBASE_AUTH_DOMAIN,
+    projectId: window.env.FIREBASE_PROJECT_ID,
+    storageBucket: window.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: window.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: window.env.FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-export { auth, db };
+export const db = getFirestore(app);
+export const auth = getAuth(app);
